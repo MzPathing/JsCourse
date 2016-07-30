@@ -6,8 +6,7 @@
     <style type="text/css">
         *{ margin: 0; padding: 0; text-decoration: none;}
         body { padding: 20px;}
-        #container { width: 600px; height: 400px; border: 3px solid #333; 
-        overflow: hidden; position: relative;}
+        #container { width: 600px; height: 400px; border: 3px solid #333;  overflow:hidden;position: relative;}
         #list { width: 4200px; height: 400px; position: absolute; z-index: 1;}
         #list img { float: left;}
         #buttons { position: absolute; height: 10px; width: 100px; z-index: 2; bottom: 20px; left: 250px;}
@@ -21,41 +20,67 @@
     </style>
     <script type="text/javascript">
     window.onload=function (){
+        var oContainer=document.getElementById("container");
         var oList=document.getElementById("list");
         var oSpan=document.getElementsByTagName("span");
+        var oBtn=document.getElementsByTagName("a");
         var oImg=document.getElementsByTagName("img");
-        var speed=10;
-        var now=0;
-        var timer=setInterval(move,30);
-
-
-        function move(){
-            oList.style.left=oList.offsetLeft+speed+"px";
-
-            for(var i=0;i<oImg.length;i++){
-                if(oList.offsetLeft==(-600*i)){
-                    clearInterval(timer);
-                    setTimeout(function(){timer=setInterval(move,30);},2000);
-                    now=i;
-                }
-            }
+        var speed=10;//设置速度
+        var now=1;//判断当前图片是第几张
+        var timer1;
+        var current=false;
+        function check(){
             if(now==6){
                 now=1;
-                oList.style.left=(-now*600)+"px";
             }
             else if(now==0){
                 now=5;
-                oList.style.left=(-now*600)+"px";
+            }
+        }
+        oBtn[0].onclick=function (){
+            console.log(now);
+            move();
+            now--;
+            check();
+            
+        }
+        oBtn[1].onclick=function (){
+            console.log(now);
+            move();
+            now++;
+            check();
+        }
+        for(var i=0;i<oSpan.length;i++){
+            oSpan[i].index=i;
+            oSpan[i].onclick=function (){
+                now=this.index+1;
+                move();
+            }
+        }
+        setInterval(move,10);
+        function move(){
+            if(-now*600>oList.offsetLeft){
+                speed=50;
+            }
+            else{
+                speed=-50;
+            }
+            if(oList.offsetLeft!=-now*600)
+            {
+               oList.style.left=oList.offsetLeft+speed+"px"; 
             }
             for(var i=0;i<oSpan.length;i++){
                 oSpan[i].className="";
-                oSpan[now-1].className="on";
             }
+            oSpan[now-1].className="on";
         }
-
-        
-        
-
+        var timer=setInterval(oBtn[1].onclick,1500);
+        oContainer.onmouseover=function (){
+            clearInterval(timer);
+        }
+        oContainer.onmouseout=function (){
+            timer=setInterval(oBtn[1].onclick,1500);
+        }
     }
     </script>
 </head>
