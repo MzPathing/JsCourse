@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{
+			width: 200px;
+			height:200px;
+			position: absolute;
+		}
+		.middle{
+			width: 250px;
+			height:250px;
+			left:175px;
+			top:75px;
+			z-index: 2;
+		}
+		.left{
+			left:0px;
+			top:100px;
+		}
+		.right{
+			left:400px;
+			top:100px;
+		}
+	</style>
+</head>
+<body>
+	<img class="middle" src="large1.jpg" alt=""/>
+	<img class="left" src="large2.jpg" alt=""/>
+	<img class="right" src="large3.jpg" alt=""/>
+	<script src="move.js"></script>
+	<script>
+	window.onload=function(){
+		var index=2;
+		var oImg=document.getElementsByTagName("img");
+		for(var i=0;i<oImg.length;i++){
+			oImg[i].index=i;
+			oImg[i].onclick=function(){
+				now=this.index;
+				var json0={"height":200,"width":200,"left":0,
+				"top":100};
+				var json1={"height":250,"width":250,"left":175,
+				"top":75};
+				var json2={"height":200,"width":200,"left":400,
+				"top":100};
+				move(oImg[this.index],json1);
+				oImg[this.index].style.zIndex=i++;
+				var left=now-1;
+				if(left==-1){
+					left=2
+				}
+				move(oImg[left],json2);
+				var right=now+1;
+				if(right==3){
+					right=0;
+				}
+				move(oImg[right],json0);
+			}
+		}
+	}
+	</script>
+</body>
+</html>
