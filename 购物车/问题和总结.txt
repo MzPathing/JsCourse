@@ -1,0 +1,24 @@
+1.ie8不支持引用的JavaScript，写在页面中的可以运行
+解决方法：
+开始-运行-输入“regsvr32 jscript.dll”后回车，然后打开internet选项-高级开启js脚本即可
+
+2.ie不支持document.getElementsByClassName()的方法
+解决方法：
+包装一个方法if (!document.getElementsByClassName) {
+        document.getElementsByClassName = function (cls) {
+            var aRet=[];
+            var aTag=document.getElementsByTagName("*");
+            for(var i=0;i<aTag.length;i++){
+                if(aTag[i].className==cls
+                    ||aTag[i].className.indexOf(" "+cls)>-1
+                    ||aTag[i].className.indexOf(" "+cls+" ")>-1
+                    ||aTag[i].className.indexOf(cls+" ")>-1){
+                    aRet.push(aTag[i]);
+                }
+            }
+            return aRet;
+        }
+
+3.ie8兼容问题
+ie支持tBodies属性但是不支持tBodies.getElementsByClassName属性,因为兼容问题在这里卡了好久。。。
+解决方法：开头声明并采用document.getElementsByClassName属性
