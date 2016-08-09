@@ -11,14 +11,12 @@ window.onload=function (){
             return arrClass;
         }
     }
-    var dataInt={'data':[{'src':'1.jpg'},{'src':'2.jpg'},{'src':'3.jpg'},{'src':'4.jpg'}]};
+    dataInt={'data':[{'src':'1.jpg'},{'src':'2.jpg'},{'src':'3.jpg'},{'src':'4.jpg'}]};
 
     waterfall();//排列照片位置
     window.onscroll=function (){
         getPic();//获取dataInt传过来的照片
     }
-     var oClientHeight=document.body.clientHeight||document.documentElement.clientHeight;
-    console.log(oClientHeight);
 }
 function waterfall(){
     oMain=document.getElementById("main");
@@ -44,14 +42,25 @@ function waterfall(){
     }
 }
 function getPic(){
+    var oPin=document.getElementsByClassName("pin");
     var oLastTop=oPin[oPin.length-1].offsetTop;//取得最后一张图片的top
     var oLastHeight=oPin[oPin.length-1].offsetHeight;//取得最后一张图片的高度
     var oScrollTop=document.body.scrollTop||document.documentElement.scrollTop;
-    var oClientHeight=document.body.clientHeight||document.documentElement.clientHeight;
+    var oClientHeight=document.documentElement.clientHeight;//这里自己之前用的是document.body.clientHeight,取得不body的高度出现错误
     if(oLastHeight/2+oLastTop<oClientHeight+oScrollTop){
-        console.log(oLastHeight/2);
-        console.log(oLastTop);
-        console.log(oClientHeight);
-        console.log(oScrollTop);
+        for(var i=0;i<dataInt.data.length;i++){
+            var oPin=document.createElement("div");
+            oPin.className="pin";
+            oMain.appendChild(oPin);
+
+            var oBox=document.createElement("div");
+            oBox.className="box";
+            oPin.appendChild(oBox);
+
+            var oImg=document.createElement("img");
+            oImg.src="images/"+dataInt.data[i].src;
+            oBox.appendChild(oImg);
+        }
+        waterfall();
     }
 }
