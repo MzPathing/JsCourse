@@ -11,6 +11,20 @@ window.onload=function (){
             return arrClass;
         }
     }
+    if(!Array.indexOf)//ie8不支持indexof属性，所以在这里添加数组方法
+    {
+        Array.prototype.indexOf = function(obj)
+        {              
+            for(var i=0; i<this.length; i++)
+            {
+                if(this[i]==obj)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
     dataInt={'data':[{'src':'1.jpg'},{'src':'2.jpg'},{'src':'3.jpg'},{'src':'4.jpg'}]};
 
     waterfall();//排列照片位置
