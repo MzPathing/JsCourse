@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜效果</title>
+	<style>
+		#small_pic{
+			border:1px solid #ccc;
+			width: 400px;
+			height:255px;
+			text-align: center;
+			margin:40px 0 0 40px;
+			position: relative;
+		}
+		#float_pic{
+			width:150px;
+			height:100px;
+			background-color: yellow;
+			opacity: 0.3;
+			position: absolute;
+		}
+		#large_pic{
+			width: 400px;
+			height: 267px;
+			background-color: red;
+			overflow: hidden;
+			position: absolute;
+			left:500px;
+			top:40px;
+		}
+		#large_pic img{
+			position: absolute;
+		}
+	</style>
+	<script>
+		window.onload=function (){
+			var small_pic=document.getElementById("small_pic");
+			var large_pic=document.getElementById("large_pic");
+			var float_pic=document.getElementById("float_pic");
+			//设置鼠标移入事件
+			small_pic.onmouseover=function (e){
+				var event=window.event||e;
+				small_pic.onmousemove=function(e){
+					var event=window.event||e;
+					var disX=event.clientX-small_pic.offsetLeft;
+					var disY=event.clientY-small_pic.offsetTop;
+					if(disX<float_pic.offsetWidth/2){
+						float_pic.style.left=0;
+						if(disY<float_pic.offsetHeight/2&&disY>=0){
+							float_pic.style.top=0;
+						}
+						else if(disY>=float_pic.offsetHeight/2&&disY<small_pic.offsetHeight-float_pic.offsetHeight/2){
+							float_pic.style.top=event.clientY-small_pic.offsetTop-float_pic.offsetHeight/2+"px";
+						}
+						else{
+							float_pic.style.top=small_pic.offsetHeight-float_pic.offsetHeight+"px";
+						}
+					}
+					else if(disX>=float_pic.offsetWidth/2&&disX<small_pic.offsetWidth-float_pic.offsetWidth/2){
+						float_pic.style.left=disX-float_pic.offsetWidth/2+"px";
+						if(disY<float_pic.offsetHeight/2&&disY>=0){
+							float_pic.style.top=0;
+						}
+						else if(disY>=float_pic.offsetHeight/2&&disY<small_pic.offsetHeight-float_pic.offsetHeight/2){
+							float_pic.style.top=event.clientY-small_pic.offsetTop-float_pic.offsetHeight/2+"px";
+						}
+						else{
+							float_pic.style.top=small_pic.offsetHeight-float_pic.offsetHeight+"px";
+						}
+					}
+					else{
+						float_pic.style.left=small_pic.offsetWidth-float_pic.offsetWidth+"px";
+						if(disY<float_pic.offsetHeight/2&&disY>=0){
+							float_pic.style.top=0;
+						}
+						else if(disY>=float_pic.offsetHeight/2&&disY<small_pic.offsetHeight-float_pic.offsetHeight/2){
+							float_pic.style.top=event.clientY-small_pic.offsetTop-float_pic.offsetHeight/2+"px";
+						}
+						else{
+							float_pic.style.top=small_pic.offsetHeight-float_pic.offsetHeight+"px";
+						}
+					}
+				}
+				small_pic.onmouseout=function (){
+					small_pic.onmousemove=null;
+					small_pic.onmouseout=null;
+				}
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="demo">
+		<div id="small_pic">
+			<div id="float_pic"></div>
+			<img src="macbook-small.jpg" alt="">
+		</div>
+
+		<div id="large_pic">
+			<img src="macbook-big.jpg" alt="">
+		</div>
+	</div>
+</body>
+</html>
