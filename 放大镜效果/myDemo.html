@@ -20,23 +20,25 @@
 			position: absolute;
 		}
 		#large_pic{
-			width: 400px;
-			height: 267px;
-			background-color: red;
+			width: 384px;
+			height: 256px;
 			overflow: hidden;
 			position: absolute;
 			left:500px;
 			top:40px;
 		}
 		#large_pic img{
+			height:654px;
+			width:1024px;
 			position: absolute;
 		}
 	</style>
 	<script>
 		window.onload=function (){
 			var small_pic=document.getElementById("small_pic");
-			var large_pic=document.getElementById("large_pic");
+			var large_pic=document.getElementById("large_pic").getElementsByTagName("img")[0];
 			var float_pic=document.getElementById("float_pic");
+			var float_pic2=document.getElementById("large_pic");
 			//设置鼠标移入事件
 			small_pic.onmouseover=function (e){
 				var event=window.event||e;
@@ -44,40 +46,36 @@
 					var event=window.event||e;
 					var disX=event.clientX-small_pic.offsetLeft;
 					var disY=event.clientY-small_pic.offsetTop;
+					//判断x的位置
 					if(disX<float_pic.offsetWidth/2){
 						float_pic.style.left=0;
-						if(disY<float_pic.offsetHeight/2&&disY>=0){
-							float_pic.style.top=0;
-						}
-						else if(disY>=float_pic.offsetHeight/2&&disY<small_pic.offsetHeight-float_pic.offsetHeight/2){
-							float_pic.style.top=event.clientY-small_pic.offsetTop-float_pic.offsetHeight/2+"px";
-						}
-						else{
-							float_pic.style.top=small_pic.offsetHeight-float_pic.offsetHeight+"px";
-						}
+						large_pic.style.left=0;
+						getY();
 					}
 					else if(disX>=float_pic.offsetWidth/2&&disX<small_pic.offsetWidth-float_pic.offsetWidth/2){
 						float_pic.style.left=disX-float_pic.offsetWidth/2+"px";
-						if(disY<float_pic.offsetHeight/2&&disY>=0){
-							float_pic.style.top=0;
-						}
-						else if(disY>=float_pic.offsetHeight/2&&disY<small_pic.offsetHeight-float_pic.offsetHeight/2){
-							float_pic.style.top=event.clientY-small_pic.offsetTop-float_pic.offsetHeight/2+"px";
-						}
-						else{
-							float_pic.style.top=small_pic.offsetHeight-float_pic.offsetHeight+"px";
-						}
+						large_pic.style.left=-parseInt(float_pic.offsetLeft*2.56)+"px";
+						getY();
 					}
 					else{
 						float_pic.style.left=small_pic.offsetWidth-float_pic.offsetWidth+"px";
+						large_pic.style.left=-(large_pic.offsetWidth-float_pic2.offsetWidth)+"px";
+						getY();
+					}
+
+					//判断y的位置
+					function getY(){
 						if(disY<float_pic.offsetHeight/2&&disY>=0){
 							float_pic.style.top=0;
+							large_pic.style.top=0;
 						}
 						else if(disY>=float_pic.offsetHeight/2&&disY<small_pic.offsetHeight-float_pic.offsetHeight/2){
 							float_pic.style.top=event.clientY-small_pic.offsetTop-float_pic.offsetHeight/2+"px";
+							large_pic.style.top=-parseInt(float_pic.offsetTop*2.56)+"px";
 						}
 						else{
 							float_pic.style.top=small_pic.offsetHeight-float_pic.offsetHeight+"px";
+							large_pic.style.top=-parseInt(float_pic.offsetTop*2.56)+"px";
 						}
 					}
 				}
