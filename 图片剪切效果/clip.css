@@ -1,0 +1,30 @@
+div,img{
+	height:380px;
+	width:460px;
+	position: absolute;
+}
+#div1{
+	left:200px;
+	top:100px;
+}
+#zoom{
+	width:180px;
+	height:180px;
+	border:1px solid white;
+}
+#img1{
+	opacity: 0.3;
+}
+.scale{
+	width:6px;
+	background-color: white;
+	height:6px;
+	margin-left: -3px;
+	margin-top: -3px;
+}
+#img2{
+	clip: rect(0,180px,180px,0);
+}
+body{
+	background-color:#ccc;
+}
