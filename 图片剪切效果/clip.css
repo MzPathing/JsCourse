@@ -2,6 +2,8 @@ div,img{
 	height:380px;
 	width:460px;
 	position: absolute;
+	left:0;
+	top:0;
 }
 #div1{
 	left:200px;
@@ -11,6 +13,8 @@ div,img{
 	width:180px;
 	height:180px;
 	border:1px solid white;
+	z-index: 99;
+	background-color: none;
 }
 #img1{
 	opacity: 0.3;
