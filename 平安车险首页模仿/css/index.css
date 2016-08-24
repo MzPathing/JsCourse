@@ -1,0 +1,108 @@
+
+*{
+	margin:0;
+	padding:0;
+}
+#container{
+	position: relative;
+	width:1080px;
+	margin:0 auto;
+	height: auto;
+	text-align: center;
+}
+.header{
+	box-shadow: 0px 1px 5px #ccc;
+
+}
+.top-title{
+	text-align: left;
+	font-size: 40px;
+	color:rgb(239,90,34);
+	padding-left: 66px;
+}
+.top-title>span{
+	color:rgb(177,177,177);
+	font-size: 30px;
+	margin-left:30px;
+}
+#top-ad{
+	margin:22px 60px -3px 62px;
+	height: 420px;
+}
+/*.ad-link{
+	position: absolute;
+	left:847px;
+	bottom:28px;
+}
+.ad-link>a{
+	font-size: 37px;
+}*/
+/*中间内容的css*/
+.content{
+	padding-top: 66px;
+}
+.btn-warning{
+	background:-webkit-linear-gradient(bottom,rgb(253,145,44) 0%, rgb(253,220,46) 100%);
+	background:-moz-linear-gradient(bottom,rgb(253,145,44) 0%, rgb(253,220,46) 100%);
+	background:-ms-linear-gradient(bottom,rgb(253,145,44) 0%, rgb(253,220,46) 100%);
+	background:-o-linear-gradient(bottom,rgb(253,145,44) 0%, rgb(253,220,46) 100%);
+	width:840px;
+	height: 122px;
+	border: 5px solid rgb(252,113,5);
+	font-size: 56px;
+	text-shadow: 5px 5px 10px rgb(252,133,5);
+}
+.content-call{
+	color:rgb(6,80,167);
+	font-size: 48px;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+.calculate{
+	text-align:left;
+	font-size: 48px;
+}
+.calcu-title{
+	border-bottom: 5px solid rgb(253,121,2);
+	text-indent:1.5em;
+}
+.calcu-culumn{
+	color:rgb(126,126,126);
+	height:144px;
+	padding-top: 50px;
+	border-bottom:1px solid #ccc;
+	padding-left: 1.5em;
+}
+.glyphicon-phone{
+	color:rgb(255,198,213); 
+}
+.glyphicon-stats{
+	color:rgb(117,187,242);
+}
+.glyphicon-bed{
+	color:rgb(152,230,131);
+}
+.calcu-culumn input{
+	border: none;
+	margin-left:60px;
+}
+.form-control{
+	padding:10px;
+	height: 80px;
+	margin-left:110px;
+	border:none;
+	color:rgb(98,98,98);
+	font-size: 40px;
+}
+#car-id{
+	color:rgb(98,98,98);
+	margin-left: 125px;
+}
+#submit{
+	text-align:center;
+	margin-top: 35px;
+}
+.footer{
+	box-shadow: 0 0 5px #ccc;
+}
