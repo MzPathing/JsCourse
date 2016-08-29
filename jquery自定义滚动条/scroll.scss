@@ -1,0 +1,79 @@
+$scrollDemoW:540px;
+$scrollDemoH:34px;
+$scroll-contH:300px;
+ul,li,div,body{
+	margin:0;
+	padding:0;
+}
+body{
+	background-color:#ccc;
+}
+.scroll-demo{
+	margin:30px auto 30px;
+	width:$scrollDemoW;
+	height:$scrollDemoH;
+	border:1px solid #e5e5e5;
+	background-color:#fff;
+	.scroll-tab{
+		text-align:center;
+		border-bottom:1px solid #e5e5e5;
+		color:#666;
+		list-style-type:none;
+		height:$scrollDemoH;
+		background-color:#f8f8f8;
+		.tab-item{
+			height:$scrollDemoH;
+			width:$scrollDemoW / 4;
+			font-size:14px;
+			line-height:$scrollDemoH;
+			float:left;
+		}
+		.select{
+			color:#00be3c;
+			border-top:2px solid #00be3c;
+			margin:-1px 0;
+		}
+	}
+}
+.scroll-wrap{
+	position:relative;
+	margin:0px auto;
+	background-color:red;
+	height:$scroll-contH;
+	width:$scrollDemoW;
+	.scroll-cont{
+		background-color:white;
+		height:$scroll-contH;
+		overflow:hidden;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	.scroll-cont h3{
+		width:100%;
+		height:30px;
+		font:16px/3;
+		text-align:center;
+	}
+	.scroll-cont p{
+		font-size:14px;
+		line-height:20px;
+		margin-bottom:10px;
+		text-indent:2em;
+	}
+}
+.scroll-area{
+		width:20px;
+		height:$scroll-contH;
+		position:absolute;
+		right:0;
+		top:0;
+		background-color:#eaeaea;
+		.scroll-block{
+			height:30px;
+			width:8px;
+			top:0;
+			position:absolute;
+			background-color:red;
+		}
+}
