@@ -1,0 +1,5 @@
+1.学到了jquery中的scrollTop方法和传统js方法的不同，而position()才和传统js方法一样
+2.学到了父容器scroll内容滚动的条件，即必须子容器超出父容器，并且设置了overflow为hidden
+3.对添加css属性和类有了深刻的印象
+4.对设置scrollTop，top，width，height等等的方法更加熟悉
+5.对jquery事件绑定更加属性，对原生js的事件属性也更加了解
