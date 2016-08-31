@@ -1,0 +1,1 @@
+设置text-indent为负数（-999），overflow设置成hidden
