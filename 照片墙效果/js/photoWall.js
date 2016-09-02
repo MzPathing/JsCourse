@@ -16,7 +16,7 @@ window.onload=function (){
 		}
 	})();
 	function drag(e){//设置鼠标拖拽移动图片事件
-		var oEvent=e||enent;
+		var oEvent=e||event;
 		var _that=this;
 		var disX=oEvent.clientX-this.offsetLeft;
 		var disY=oEvent.clientY-this.offsetTop;
@@ -24,7 +24,7 @@ window.onload=function (){
 		var minObj,minDis;
 		clearInterval(_that.timer);
 		document.onmousemove=function (e){
-			var oEvent=e||enent;
+			var oEvent=e||window.event;
 			minDis=9999;
 			minObj=null;//距离重置，这两段代码应该放在移动时重置，防止 minDis被后续函数改变，后面距离必须小于最开始的值才能设置class
 			_that.style.left=oEvent.clientX-disX+"px";
@@ -45,6 +45,12 @@ window.onload=function (){
 			if(minObj){//这一串代码，用于判断所有循环结束过后是否存在图片碰撞，如果存在，设置最近的图片class
 				minObj.className="nearest";
 			}
+			if(oEvent.preventDefault){
+				oEvent.preventDefault();
+			}
+			else{
+				oEvent.returnValue=false;
+			}
 		}
 		document.onmouseup=function (){
 			if(minObj){
@@ -62,8 +68,12 @@ window.onload=function (){
 			document.onmousemove=null;//解除事件，防止垃圾遗留
 			document.onmouseup=null;
 		}
-		oEvent.preventDefault();
-		return false;
+		if(oEvent.preventDefault){
+			oEvent.preventDefault();
+		}
+		else{
+			oEvent.returnValue=false;
+		}
 	}
 	function checkImpact(obj1,obj2){//检查两张图片是否产生了碰撞
 		var t1=obj1.offseTop;
